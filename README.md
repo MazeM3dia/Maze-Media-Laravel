@@ -52,4 +52,4 @@ php artisan test --compact
 
 ---
 
-*Project by Maze Media — muhdyusuffrosli@gmail.com*
+*Project by [Maze Media](https://mazem3dia.net/)*
