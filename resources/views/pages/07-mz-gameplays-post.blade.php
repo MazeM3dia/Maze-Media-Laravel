@@ -1,4 +1,4 @@
-<x-layouts.templates.default title="MZ Gameplays Post">
+<x-layouts.templates.page title="MZ Gameplays Post">
 
     <x-slot:styles>
     </x-slot:styles>
@@ -8,4 +8,4 @@
     <x-slot:scripts>
     </x-slot:scripts>
 
-</x-layouts.templates.default>
+</x-layouts.templates.page>

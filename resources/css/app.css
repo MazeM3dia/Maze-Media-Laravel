@@ -74,6 +74,12 @@
     --color-info-400: oklch(80.9% 0.0956 251.8);
 }
 
+@layer base {
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-heading font-semibold leading-relaxed tracking-tight mb-4;
+    }
+}
+
 [data-flux-field]:not(ui-radio, ui-checkbox) {
     @apply grid gap-2;
 }
@@ -85,5 +91,5 @@
 input:focus[data-flux-control],
 textarea:focus[data-flux-control],
 select:focus[data-flux-control] {
-    @apply outline-hidden ring-2 ring-offset-2 ;
+    @apply outline-hidden ring-2 ring-offset-2;
 }

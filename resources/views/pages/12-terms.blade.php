@@ -1,4 +1,4 @@
-<x-layouts.templates.default title="Terms">
+<x-layouts.templates.page title="Terms">
 
     <x-slot:styles>
     </x-slot:styles>
@@ -8,4 +8,4 @@
     <x-slot:scripts>
     </x-slot:scripts>
 
-</x-layouts.templates.default>
+</x-layouts.templates.page>
