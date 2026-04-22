@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import '../../vendor/livewire/flux/dist/flux.css';
+@import "tailwindcss";
+@import "../../vendor/livewire/flux/dist/flux.css";
 
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -9,41 +9,74 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-*: initial;
 
-    --color-zinc-50: #fafafa;
-    --color-zinc-100: #f5f5f5;
-    --color-zinc-200: #e5e5e5;
-    --color-zinc-300: #d4d4d4;
-    --color-zinc-400: #a3a3a3;
-    --color-zinc-500: #737373;
-    --color-zinc-600: #525252;
-    --color-zinc-700: #404040;
-    --color-zinc-800: #262626;
-    --color-zinc-900: #171717;
-    --color-zinc-950: #0a0a0a;
+    --font-heading:
+        "Montserrat", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-body:
+        "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+    --font-mono:
+        "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo,
+        Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
-    --color-accent: var(--color-neutral-800);
-    --color-accent-content: var(--color-neutral-800);
-    --color-accent-foreground: var(--color-white);
-}
+    --color-dark-50: oklch(95.3% 0 0);
+    --color-dark-100: oklch(86.7% 0.0042 91.5);
+    --color-dark-200: oklch(72.8% 0.0044 91.5);
+    --color-dark-300: oklch(57.6% 0.0033 84.6);
+    --color-dark-400: oklch(42.4% 0.0035 84.6);
+    --color-dark-500: oklch(33.2% 0.0035 106.6);
+    --color-dark-600: oklch(27.3% 0 0);
+    --color-dark-700: oklch(23.9% 0 0);
+    --color-dark-800: oklch(20.9% 0 0);
+    --color-dark-900: oklch(17.8% 0 0);
+    --color-dark-950: oklch(14.5% 0 0);
 
-@layer theme {
-    .dark {
-        --color-accent: var(--color-white);
-        --color-accent-content: var(--color-white);
-        --color-accent-foreground: var(--color-neutral-800);
-    }
+    --color-light-50: oklch(98.6% 0.0073 80.7);
+    --color-light-100: oklch(95.3% 0.0209 88.7);
+    --color-light-200: oklch(90.8% 0.0256 86.9);
+    --color-light-300: oklch(85.5% 0.016 86.4);
+    --color-light-400: oklch(75.9% 0.0241 84.6);
+    --color-light-500: oklch(67% 0.0197 78.2);
+    --color-light-600: oklch(61.9% 0.0209 83);
+    --color-light-700: oklch(52% 0.0145 75.3);
+    --color-light-800: oklch(41.6% 0.0118 72.5);
+    --color-light-900: oklch(34% 0.0138 95.5);
+    --color-light-950: oklch(22.8% 0.0049 67.6);
+
+    --color-lime-50: oklch(97.4% 0.0481 119.9);
+    --color-lime-100: oklch(94.7% 0.0952 121.4);
+    --color-lime-200: oklch(90.2% 0.1731 124.8);
+    --color-lime-300: oklch(84.9% 0.2073 128.8);
+    --color-lime-400: oklch(71.4% 0.1785 130.9);
+    --color-lime-500: oklch(49.3% 0.1181 130.2);
+    --color-lime-600: oklch(35.8% 0.0831 130.7);
+    --color-lime-700: oklch(27.8% 0.0611 130);
+    --color-lime-800: oklch(20.3% 0.0408 128.3);
+    --color-lime-900: oklch(15.2% 0.031 127.6);
+    --color-lime-950: oklch(12.5% 0.022 133.1);
+
+    --color-danger-100: oklch(21.7% 0.0497 22.1);
+    --color-danger-200: oklch(39.4% 0.1208 24.6);
+    --color-danger-300: oklch(58.6% 0.1467 22.7);
+    --color-danger-400: oklch(71.1% 0.1661 22.2);
+
+    --color-warning-100: oklch(25.1% 0.0451 80);
+    --color-warning-200: oklch(46.7% 0.0932 71.6);
+    --color-warning-300: oklch(68.8% 0.1354 82.1);
+    --color-warning-400: oklch(83.7% 0.1644 84.4);
+
+    --color-info-100: oklch(23.7% 0.0489 254.5);
+    --color-info-200: oklch(40.4% 0.0944 252.9);
+    --color-info-300: oklch(62.9% 0.105 244.8);
+    --color-info-400: oklch(80.9% 0.0956 251.8);
 }
 
 @layer base {
-
-    *,
-    ::after,
-    ::before,
-    ::backdrop,
-    ::file-selector-button {
-        border-color: var(--color-gray-200, currentColor);
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-heading font-semibold leading-relaxed tracking-tight mb-4;
     }
 }
 
@@ -52,15 +85,11 @@
 }
 
 [data-flux-label] {
-    @apply  !mb-0 !leading-tight;
+    @apply !mb-0 !leading-tight;
 }
 
 input:focus[data-flux-control],
 textarea:focus[data-flux-control],
 select:focus[data-flux-control] {
-    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+    @apply outline-hidden ring-2  ring-offset-2;
 }
-
-/* \[:where(&)\]:size-4 {
-    @apply size-4;
-} */

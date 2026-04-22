@@ -1,0 +1,518 @@
+/* ============================================================
+   MZMD Design System — Tailwind v4 Theme
+   Color scales: dark · light · lime · danger · warning · info
+   All --color-* tokens auto-generate Tailwind utilities:
+     bg-dark-950   text-light-100   border-lime-300
+     bg-danger-100 text-danger-400  border-warning-300/50
+   Usage: @import "./mzmd-theme.css"; in resources/css/app.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+
+@theme {
+
+  /* --------------------------------------------------
+     FONTS
+     Usage: font-heading   font-body   font-mono
+  -------------------------------------------------- */
+  --font-heading: "Montserrat", sans-serif;
+  --font-body:    "Plus Jakarta Sans", sans-serif;
+  --font-mono:    "JetBrains Mono", "Fira Code", monospace;
+
+
+  /* --------------------------------------------------
+     DARK — background / surface scale
+     50  = lightest (borders, light UI elements)
+     600 = overlay
+     700 = elevated (inputs, dropdowns)
+     800 = surface (cards)
+     900 = base (body background)
+     950 = void (page root, footer)
+
+     Usage:
+       bg-dark-950          — page root
+       bg-dark-900          — body
+       bg-dark-800          — cards
+       bg-dark-700          — inputs, dropdowns
+       bg-dark-600          — hover overlay
+       border-dark-300/30   — subtle divider
+       text-dark-200        — muted text on light
+  -------------------------------------------------- */
+  --color-dark-50:  #f0efee;
+  --color-dark-100: #d4d3d0;
+  --color-dark-200: #a8a7a4;
+  --color-dark-300: #7a7977;
+  --color-dark-400: #4f4e4c;
+  --color-dark-500: #363634;
+  --color-dark-600: #272727;
+  --color-dark-700: #1f1f1f;
+  --color-dark-800: #181818;
+  --color-dark-900: #111111;
+  --color-dark-950: #0a0a0a;
+
+
+  /* --------------------------------------------------
+     LIGHT — text / content hierarchy
+     100 = primary text    — headings, key content
+     400 = secondary text  — body copy, descriptions
+     700 = tertiary text   — captions, metadata
+     900 = disabled text
+
+     Usage:
+       text-light-100   — headings
+       text-light-400   — body copy
+       text-light-700   — captions, dates, meta
+       text-light-900   — disabled state
+       bg-light-100/5   — subtle warm tint on surfaces
+  -------------------------------------------------- */
+  --color-light-50:  #fdfaf5;
+  --color-light-100: #f5efe0;
+  --color-light-200: #e8e0ce;
+  --color-light-300: #d4cfc4;
+  --color-light-400: #b8b0a0;
+  --color-light-500: #9c9488;
+  --color-light-600: #8c8578;
+  --color-light-700: #6e6860;
+  --color-light-800: #504b45;
+  --color-light-900: #3a3830;
+  --color-light-950: #1e1c1a;
+
+
+  /* --------------------------------------------------
+     LIME — accent / brand signal
+     300 = PRIMARY SIGNAL — CTA buttons, active states,
+           live indicators, focus rings, links
+     400 = hover state on lime-300
+     500 = muted accent — tags, borders, success input
+     700 = tonal background — badge bg, alert bg
+
+     Usage:
+       bg-lime-300              — primary button fill
+       text-lime-300            — accent text, links
+       hover:bg-lime-400        — button hover
+       bg-lime-700              — secondary button hover bg
+       border-lime-300          — accent border, focus
+       border-lime-300/30       — muted accent border
+       bg-lime-300/10           — badge / alert tint bg
+       ring-lime-300            — focus ring
+  -------------------------------------------------- */
+  --color-lime-50:  #f2fcd8;
+  --color-lime-100: #e3f8b0;
+  --color-lime-200: #c5f267;
+  --color-lime-300: #a3e635;
+  --color-lime-400: #7ab82a;
+  --color-lime-500: #4a6e1a;
+  --color-lime-600: #2d4510;
+  --color-lime-700: #1e2e0a;
+  --color-lime-800: #111a05;
+  --color-lime-900: #080e02;
+  --color-lime-950: #040802;
+
+
+  /* --------------------------------------------------
+     DANGER — error / destructive actions
+     100 = tonal background   — alert bg, error surface
+     200 = muted border
+     300 = visible border
+     400 = text on dark
+
+     Usage:
+       bg-danger-100 border border-danger-200 text-danger-400
+         — complete error alert pattern
+  -------------------------------------------------- */
+  --color-danger-100: #2d0f0f;
+  --color-danger-200: #7a2323;
+  --color-danger-300: #c45252;
+  --color-danger-400: #f87171;
+
+
+  /* --------------------------------------------------
+     WARNING — caution / attention states
+     Usage:
+       bg-warning-100 border border-warning-200 text-warning-400
+  -------------------------------------------------- */
+  --color-warning-100: #2d1f05;
+  --color-warning-200: #7a5010;
+  --color-warning-300: #c4911a;
+  --color-warning-400: #fbbf24;
+
+
+  /* --------------------------------------------------
+     INFO — informational / neutral states
+     Usage:
+       bg-info-100 border border-info-200 text-info-400
+  -------------------------------------------------- */
+  --color-info-100: #0d1f35;
+  --color-info-200: #1e4a7a;
+  --color-info-300: #4d8fc4;
+  --color-info-400: #93c5fd;
+
+
+  /* --------------------------------------------------
+     FONT SIZES
+  -------------------------------------------------- */
+  --text-display-2xl: 4rem;
+  --text-display-xl:  3.25rem;
+  --text-display-lg:  2.625rem;
+  --text-display-md:  2.125rem;
+  --text-h1:          2rem;
+  --text-h2:          1.5rem;
+  --text-h3:          1.25rem;
+  --text-h4:          1.0625rem;
+  --text-h5:          0.9375rem;
+  --text-body-lg:     1.0625rem;
+  --text-body:        0.9375rem;
+  --text-body-sm:     0.8125rem;
+  --text-label:       0.75rem;
+  --text-caption:     0.6875rem;
+
+
+  /* --------------------------------------------------
+     LINE HEIGHTS
+  -------------------------------------------------- */
+  --leading-tight:   1.1;
+  --leading-snug:    1.3;
+  --leading-normal:  1.6;
+  --leading-relaxed: 1.75;
+
+
+  /* --------------------------------------------------
+     LETTER SPACING
+  -------------------------------------------------- */
+  --tracking-tightest: -0.03em;
+  --tracking-tight:    -0.02em;
+  --tracking-normal:    0em;
+  --tracking-wide:      0.04em;
+  --tracking-widest:    0.12em;
+
+
+  /* --------------------------------------------------
+     FONT WEIGHTS
+  -------------------------------------------------- */
+  --font-weight-light:     300;
+  --font-weight-regular:   400;
+  --font-weight-medium:    500;
+  --font-weight-semibold:  600;
+  --font-weight-bold:      700;
+  --font-weight-extrabold: 800;
+  --font-weight-black:     900;
+
+
+  /* --------------------------------------------------
+     BORDER RADIUS
+  -------------------------------------------------- */
+  --radius-sm:   0.25rem;
+  --radius-md:   0.375rem;
+  --radius-lg:   0.625rem;
+  --radius-xl:   0.875rem;
+  --radius-2xl:  1.25rem;
+  --radius-full: 9999px;
+
+
+  /* --------------------------------------------------
+     SEMANTIC SPACING
+  -------------------------------------------------- */
+  --spacing-section:    5rem;
+  --spacing-section-lg: 7.5rem;
+  --spacing-container:  80rem;
+
+}
+
+
+/* ============================================================
+   @layer base — HTML element defaults
+   ============================================================ */
+
+@layer base {
+
+  html {
+    background-color: var(--color-dark-950);
+    color: var(--color-light-100);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: var(--leading-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-dark-900);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-light-100);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+  }
+  h1 { font-size: var(--text-h1); font-weight: var(--font-weight-bold); }
+  h2 { font-size: var(--text-h2); font-weight: var(--font-weight-semibold); }
+  h3 { font-size: var(--text-h3); font-weight: var(--font-weight-semibold); }
+  h4 { font-size: var(--text-h4); font-weight: var(--font-weight-medium); }
+  h5 { font-size: var(--text-h5); font-weight: var(--font-weight-medium); }
+
+  p {
+    color: var(--color-light-400);
+    line-height: var(--leading-relaxed);
+  }
+
+  a {
+    color: var(--color-lime-300);
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+  a:hover { color: var(--color-lime-400); }
+
+  ::selection {
+    background-color: var(--color-lime-300);
+    color: var(--color-dark-950);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-lime-300);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+}
+
+
+/* ============================================================
+   @layer components — Reusable Blade component classes
+   ============================================================ */
+
+@layer components {
+
+  /* --- Layout --- */
+  .container-mzmd {
+    max-width: var(--spacing-container);
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+  .py-section    { padding-block: var(--spacing-section); }
+  .py-section-lg { padding-block: var(--spacing-section-lg); }
+
+
+  /* --- Cards --- */
+  .card {
+    background-color: var(--color-dark-800);
+    border-radius: var(--radius-xl);
+    border: 0.5px solid rgb(255 255 255 / 0.10);
+    overflow: hidden;
+    transition: border-color 200ms ease;
+  }
+  .card:hover     { border-color: rgb(255 255 255 / 0.22); }
+  .card-elevated  {
+    background-color: var(--color-dark-700);
+    border-radius: var(--radius-xl);
+    border: 0.5px solid rgb(255 255 255 / 0.10);
+    overflow: hidden;
+  }
+  .card-accent    { border-left: 2px solid var(--color-lime-300); }
+
+
+  /* --- Buttons --- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--text-body-sm);
+    border-radius: var(--radius-md);
+    padding: 0.5625rem 1.25rem;
+    cursor: pointer;
+    transition: all 150ms ease;
+    border: none;
+    letter-spacing: var(--tracking-wide);
+    white-space: nowrap;
+  }
+  .btn:active { transform: scale(0.97); }
+
+  .btn-primary   { background-color: var(--color-lime-300); color: var(--color-dark-950); font-weight: var(--font-weight-bold); }
+  .btn-primary:hover { background-color: var(--color-lime-400); }
+
+  .btn-secondary { background-color: transparent; color: var(--color-lime-300); border: 1px solid var(--color-lime-300); }
+  .btn-secondary:hover { background-color: var(--color-lime-700); }
+
+  .btn-ghost     { background-color: rgb(255 255 255 / 0.05); color: var(--color-light-100); border: 0.5px solid rgb(255 255 255 / 0.10); }
+  .btn-ghost:hover { background-color: var(--color-dark-700); }
+
+  .btn-danger    { background-color: transparent; color: var(--color-danger-400); border: 1px solid var(--color-danger-300); }
+  .btn-danger:hover { background-color: var(--color-danger-100); }
+
+  .btn-sm { padding: 0.375rem 0.875rem; font-size: var(--text-caption); }
+  .btn-lg { padding: 0.75rem 1.75rem;   font-size: var(--text-body); }
+
+
+  /* --- Badges --- */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3125rem;
+    font-family: var(--font-heading);
+    font-size: var(--text-caption);
+    font-weight: var(--font-weight-semibold);
+    padding: 0.1875rem 0.625rem;
+    border-radius: var(--radius-full);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+  }
+  .badge-chart    { background-color: rgb(163 230 53 / 0.10); color: var(--color-lime-300); border: 0.5px solid rgb(163 230 53 / 0.30); }
+  .badge-gameplay { background-color: rgb(122 184 42 / 0.10); color: var(--color-lime-400); border: 0.5px solid rgb(122 184 42 / 0.30); }
+  .badge-project  { background-color: rgb(255 255 255 / 0.06); color: var(--color-light-400); border: 0.5px solid rgb(255 255 255 / 0.10); }
+  .badge-blog     { background-color: rgb(245 239 224 / 0.06); color: var(--color-light-100); border: 0.5px solid rgb(245 239 224 / 0.15); }
+
+  .dot-live {
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 9999px;
+    background-color: var(--color-lime-300);
+    display: inline-block;
+    flex-shrink: 0;
+    animation: pulse-dot 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.35} }
+
+
+  /* --- Navigation --- */
+  .nav {
+    background-color: rgb(10 10 10 / 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid rgb(255 255 255 / 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-link {
+    font-family: var(--font-heading);
+    font-size: var(--text-body-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-light-700);
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--radius-md);
+    transition: color 150ms ease, background-color 150ms ease;
+  }
+  .nav-link:hover  { color: var(--color-light-100); background-color: var(--color-dark-700); }
+  .nav-link.active { color: var(--color-lime-300); }
+
+
+  /* --- Section label --- */
+  .section-label {
+    font-family: var(--font-heading);
+    font-size: var(--text-label);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-lime-300);
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+
+  /* --- Inputs --- */
+  .input {
+    background-color: var(--color-dark-700);
+    border: 0.5px solid rgb(255 255 255 / 0.10);
+    border-radius: var(--radius-md);
+    color: var(--color-light-100);
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    padding: 0.5625rem 0.875rem;
+    width: 100%;
+    transition: border-color 150ms ease;
+    outline: none;
+  }
+  .input::placeholder { color: var(--color-light-700); }
+  .input:focus        { border-color: var(--color-lime-300); }
+  .input-error        { border-color: var(--color-danger-300) !important; }
+  .input-success      { border-color: var(--color-lime-500) !important; }
+  .input-disabled     { opacity: 0.5; cursor: not-allowed; }
+
+
+  /* --- Alerts --- */
+  .alert {
+    display: flex;
+    gap: 0.625rem;
+    padding: 0.75rem 0.875rem;
+    border-radius: var(--radius-lg);
+    font-size: var(--text-body-sm);
+    line-height: var(--leading-normal);
+    border: 0.5px solid transparent;
+  }
+  .alert-success { background-color: var(--color-lime-700);    border-color: var(--color-lime-500);    color: var(--color-lime-300); }
+  .alert-danger  { background-color: var(--color-danger-100);  border-color: var(--color-danger-200);  color: var(--color-danger-400); }
+  .alert-warning { background-color: var(--color-warning-100); border-color: var(--color-warning-200); color: var(--color-warning-400); }
+  .alert-info    { background-color: var(--color-info-100);    border-color: var(--color-info-200);    color: var(--color-info-400); }
+
+
+  /* --- Divider --- */
+  .divider { height: 0.5px; background-color: rgb(255 255 255 / 0.06); }
+
+
+  /* --- Meta band --- */
+  .meta-band {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-body);
+    font-size: var(--text-label);
+    color: var(--color-light-700);
+  }
+
+
+  /* --- Footer --- */
+  .footer {
+    background-color: var(--color-dark-950);
+    border-top: 0.5px solid rgb(255 255 255 / 0.06);
+    padding-block: 3rem;
+  }
+
+}
+
+
+/* ============================================================
+   @layer utilities — Display scale helpers
+   ============================================================ */
+
+@layer utilities {
+
+  .text-display-2xl {
+    font-family: var(--font-heading);
+    font-size: var(--text-display-2xl);
+    font-weight: var(--font-weight-extrabold);
+    letter-spacing: var(--tracking-tightest);
+    line-height: var(--leading-tight);
+  }
+  .text-display-xl {
+    font-family: var(--font-heading);
+    font-size: var(--text-display-xl);
+    font-weight: var(--font-weight-extrabold);
+    letter-spacing: var(--tracking-tightest);
+    line-height: var(--leading-tight);
+  }
+  .text-display-lg {
+    font-family: var(--font-heading);
+    font-size: var(--text-display-lg);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--leading-tight);
+  }
+  .text-display-md {
+    font-family: var(--font-heading);
+    font-size: var(--text-display-md);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--leading-snug);
+  }
+
+}

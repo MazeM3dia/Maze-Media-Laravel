@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MZMD — Design System Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark-50:  #f0efee;
+      --dark-100: #d4d3d0;
+      --dark-200: #a8a7a4;
+      --dark-300: #7a7977;
+      --dark-400: #4f4e4c;
+      --dark-500: #363634;
+      --dark-600: #272727;
+      --dark-700: #1f1f1f;
+      --dark-800: #181818;
+      --dark-900: #111111;
+      --dark-950: #0a0a0a;
+
+      --light-50:  #fdfaf5;
+      --light-100: #f5efe0;
+      --light-200: #e8e0ce;
+      --light-300: #d4cfc4;
+      --light-400: #b8b0a0;
+      --light-500: #9c9488;
+      --light-600: #8c8578;
+      --light-700: #6e6860;
+      --light-800: #504b45;
+      --light-900: #3a3830;
+      --light-950: #1e1c1a;
+
+      --lime-50:  #f2fcd8;
+      --lime-100: #e3f8b0;
+      --lime-200: #c5f267;
+      --lime-300: #a3e635;
+      --lime-400: #7ab82a;
+      --lime-500: #4a6e1a;
+      --lime-600: #2d4510;
+      --lime-700: #1e2e0a;
+      --lime-800: #111a05;
+      --lime-900: #080e02;
+      --lime-950: #040802;
+
+      --danger-100: #2d0f0f;
+      --danger-200: #7a2323;
+      --danger-300: #c45252;
+      --danger-400: #f87171;
+
+      --warning-100: #2d1f05;
+      --warning-200: #7a5010;
+      --warning-300: #c4911a;
+      --warning-400: #fbbf24;
+
+      --info-100: #0d1f35;
+      --info-200: #1e4a7a;
+      --info-300: #4d8fc4;
+      --info-400: #93c5fd;
+
+      --fh: "Montserrat", sans-serif;
+      --fb: "Plus Jakarta Sans", sans-serif;
+      --fm: "JetBrains Mono", "Fira Code", monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      background: var(--dark-950);
+      color: var(--light-100);
+      font-family: var(--fb);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    body { background: var(--dark-900); min-height: 100vh; }
+    h1,h2,h3,h4,h5,h6 { font-family: var(--fh); color: var(--light-100); line-height: 1.1; letter-spacing: -0.02em; }
+    p { color: var(--light-400); line-height: 1.75; }
+    a { color: var(--lime-300); text-decoration: none; }
+    ::selection { background: var(--lime-300); color: var(--dark-950); }
+    :focus-visible { outline: 2px solid var(--lime-300); outline-offset: 3px; border-radius: 4px; }
+
+    .wrap    { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 48px 0; border-bottom: 0.5px solid rgba(255,255,255,0.05); }
+    .sec-label {
+      font-family: var(--fh); font-size: 10px; font-weight: 700;
+      color: var(--lime-300); letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+    .row    { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+    .nav {
+      background: rgba(10,10,10,0.92);
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+      padding: 0 24px; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    }
+    .nav-logo { font-family: var(--fh); font-size: 20px; font-weight: 900; color: var(--light-100); letter-spacing: -0.03em; }
+    .nav-logo span { color: var(--lime-300); }
+    .nav-links { display: flex; gap: 2px; }
+    .nav-link {
+      font-family: var(--fh); font-size: 12px; font-weight: 500;
+      color: var(--light-700); padding: 6px 10px; border-radius: 6px;
+      transition: all 150ms; cursor: pointer;
+    }
+    .nav-link:hover { color: var(--light-100); background: var(--dark-700); }
+    .nav-link.active { color: var(--lime-300); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      font-family: var(--fh); font-weight: 700; font-size: 12px;
+      border-radius: 6px; padding: 9px 18px; cursor: pointer;
+      border: none; letter-spacing: 0.04em; white-space: nowrap; transition: all 150ms;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary   { background: var(--lime-300); color: var(--dark-950); }
+    .btn-primary:hover { background: var(--lime-400); }
+    .btn-secondary { background: transparent; color: var(--lime-300); border: 1px solid var(--lime-300); }
+    .btn-secondary:hover { background: var(--lime-700); }
+    .btn-ghost     { background: rgba(255,255,255,0.05); color: var(--light-100); border: 0.5px solid rgba(255,255,255,0.10); }
+    .btn-ghost:hover { background: var(--dark-700); }
+    .btn-danger    { background: transparent; color: var(--danger-400); border: 1px solid var(--danger-300); }
+    .btn-danger:hover { background: var(--danger-100); }
+    .btn-disabled  { background: var(--dark-700); color: var(--light-900); border: 0.5px solid rgba(255,255,255,0.06); cursor: not-allowed; opacity: 0.6; }
+    .btn-sm { padding: 6px 12px; font-size: 11px; }
+    .btn-lg { padding: 12px 28px; font-size: 13px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner { width: 12px; height: 12px; border: 2px solid var(--dark-950); border-top-color: transparent; border-radius: 50%; animation: spin 0.7s linear infinite; flex-shrink: 0; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-family: var(--fh); font-size: 10px; font-weight: 700;
+      padding: 3px 9px; border-radius: 9999px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .badge-chart   { background: rgba(163,230,53,0.10); color: var(--lime-300); border: 0.5px solid rgba(163,230,53,0.30); }
+    .badge-game    { background: rgba(122,184,42,0.10); color: var(--lime-400); border: 0.5px solid rgba(122,184,42,0.30); }
+    .badge-proj    { background: rgba(255,255,255,0.06); color: var(--light-400); border: 0.5px solid rgba(255,255,255,0.10); }
+    .badge-blog    { background: rgba(245,239,224,0.06); color: var(--light-100); border: 0.5px solid rgba(245,239,224,0.15); }
+    .badge-special { background: rgba(251,191,36,0.10); color: var(--warning-400); border: 0.5px solid rgba(251,191,36,0.30); }
+    .badge-info    { background: rgba(147,197,253,0.10); color: var(--info-400); border: 0.5px solid rgba(147,197,253,0.30); }
+    .dot { width: 5px; height: 5px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+    .dot-live { background: var(--lime-300); animation: pulse 1.5s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+
+    .card { background: var(--dark-800); border-radius: 14px; border: 0.5px solid rgba(255,255,255,0.10); overflow: hidden; transition: border-color 200ms; }
+    .card:hover { border-color: rgba(255,255,255,0.22); }
+    .card-accent { border-left: 2px solid var(--lime-300); }
+    .card-elevated { background: var(--dark-700); border-radius: 14px; border: 0.5px solid rgba(255,255,255,0.10); overflow: hidden; }
+    .card-header { padding: 14px 16px 10px; border-bottom: 0.5px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .card-body   { padding: 12px 16px; }
+    .card-footer { padding: 10px 16px; border-top: 0.5px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; }
+    .card-title  { font-family: var(--fh); font-size: 14px; font-weight: 700; color: var(--light-100); line-height: 1.2; margin: 4px 0 0; }
+    .card-text   { font-size: 12px; color: var(--light-400); line-height: 1.6; }
+    .card-meta   { font-size: 11px; color: var(--light-700); white-space: nowrap; margin-top: 4px; }
+    .meta-band   { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--light-700); }
+    .meta-dot    { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.25); flex-shrink: 0; }
+
+    .stat { background: var(--dark-700); border-radius: 10px; padding: 14px 16px; border: 0.5px solid rgba(255,255,255,0.06); }
+    .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--light-700); font-family: var(--fh); font-weight: 600; margin-bottom: 4px; }
+    .stat-value { font-family: var(--fh); font-size: 28px; font-weight: 800; color: var(--light-100); line-height: 1; }
+    .stat-sub   { font-size: 11px; color: var(--lime-300); margin-top: 4px; }
+
+    .field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label { font-size: 10px; font-weight: 700; color: var(--light-700); font-family: var(--fh); letter-spacing: 0.08em; text-transform: uppercase; }
+    .field-error { font-size: 11px; color: var(--danger-400); }
+    .field-ok    { font-size: 11px; color: var(--lime-300); }
+    .input {
+      background: var(--dark-700); border: 0.5px solid rgba(255,255,255,0.10);
+      border-radius: 6px; color: var(--light-100);
+      font-family: var(--fb); font-size: 13px; padding: 9px 12px;
+      width: 100%; outline: none; transition: border-color 150ms;
+    }
+    .input::placeholder { color: var(--light-700); }
+    .input:focus        { border-color: var(--lime-300); }
+    .input-error        { border-color: var(--danger-300) !important; }
+    .input-success      { border-color: var(--lime-500) !important; }
+    textarea.input      { resize: vertical; min-height: 80px; line-height: 1.6; }
+    .select-wrap { position: relative; }
+    .select-wrap select {
+      appearance: none; -webkit-appearance: none;
+      background: var(--dark-700); border: 0.5px solid rgba(255,255,255,0.10);
+      border-radius: 6px; color: var(--light-100);
+      font-family: var(--fb); font-size: 13px; padding: 9px 32px 9px 12px;
+      width: 100%; outline: none; cursor: pointer;
+    }
+    .select-wrap::after { content: "▾"; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--light-700); font-size: 11px; pointer-events: none; }
+    .toggle-row { display: flex; align-items: center; gap: 8px; }
+    .toggle { position: relative; width: 34px; height: 19px; flex-shrink: 0; cursor: pointer; }
+    .toggle input { opacity: 0; width: 0; height: 0; position: absolute; }
+    .t-track { position: absolute; inset: 0; border-radius: 9999px; background: var(--dark-600); border: 0.5px solid rgba(255,255,255,0.10); transition: background 200ms; }
+    .toggle input:checked ~ .t-track { background: var(--lime-500); border-color: var(--lime-300); }
+    .t-thumb { position: absolute; width: 13px; height: 13px; top: 3px; left: 3px; border-radius: 50%; background: var(--light-700); transition: transform 200ms, background 200ms; pointer-events: none; }
+    .toggle input:checked ~ .t-thumb { transform: translateX(15px); background: var(--lime-300); }
+    .check-row { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--light-400); cursor: pointer; }
+    .check-row input { accent-color: var(--lime-300); width: 15px; height: 15px; cursor: pointer; }
+
+    .alert { display: flex; gap: 10px; padding: 12px 14px; border-radius: 10px; font-size: 12px; line-height: 1.5; border: 0.5px solid; }
+    .alert-icon  { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+    .alert-title { font-weight: 700; font-family: var(--fh); font-size: 11px; letter-spacing: 0.04em; margin-bottom: 2px; }
+    .alert-success { background: var(--lime-700);    border-color: var(--lime-500);    color: var(--lime-300); }
+    .alert-danger  { background: var(--danger-100);  border-color: var(--danger-200);  color: var(--danger-400); }
+    .alert-warning { background: var(--warning-100); border-color: var(--warning-200); color: var(--warning-400); }
+    .alert-info    { background: var(--info-100);    border-color: var(--info-200);    color: var(--info-400); }
+
+    .pager { display: flex; gap: 4px; align-items: center; }
+    .pager-btn {
+      width: 32px; height: 32px; border-radius: 6px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 12px; font-family: var(--fh); font-weight: 600;
+      cursor: pointer; border: 0.5px solid rgba(255,255,255,0.10);
+      background: transparent; color: var(--light-400); transition: all 150ms;
+    }
+    .pager-btn.active { background: var(--lime-300); color: var(--dark-950); border-color: var(--lime-300); }
+    .pager-btn:hover:not(.active) { background: var(--dark-700); color: var(--light-100); }
+
+    .tt { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .tt th { text-align: left; padding: 8px 12px; font-family: var(--fh); font-size: 10px; font-weight: 700; color: var(--light-700); letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
+    .tt td { padding: 8px 12px; border-bottom: 0.5px solid rgba(255,255,255,0.04); color: var(--light-400); vertical-align: middle; }
+    .tt tr:last-child td { border-bottom: none; }
+    .tt td:first-child { font-family: var(--fm); color: var(--lime-300); font-size: 11px; }
+    .sw { display: inline-block; width: 14px; height: 14px; border-radius: 3px; vertical-align: middle; margin-right: 7px; border: 0.5px solid rgba(255,255,255,0.10); }
+
+    .ramp-strip { display: flex; border-radius: 8px; overflow: hidden; margin-bottom: 6px; height: 40px; }
+    .ramp-stop  { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    .ramp-stop span { font-family: var(--fm); font-size: 8px; font-weight: 700; line-height: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">MZ<span>·</span>MD</div>
+    <div class="nav-links">
+      <span class="nav-link active">Charts</span>
+      <span class="nav-link">Gameplays</span>
+      <span class="nav-link">Projects</span>
+      <span class="nav-link">Blog</span>
+      <span class="nav-link">About</span>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button class="btn btn-sm btn-ghost">RSS</button>
+      <button class="btn btn-sm btn-primary">Latest →</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section style="padding:72px 0 64px;background:var(--dark-950);border-bottom:0.5px solid rgba(255,255,255,0.05);">
+    <div class="wrap">
+      <div style="margin-bottom:16px;">
+        <span class="badge badge-chart"><span class="dot dot-live"></span>On Air</span>
+      </div>
+      <h1 style="font-size:56px;font-weight:900;letter-spacing:-0.03em;line-height:1.0;margin-bottom:20px;">
+        All of MZMD.<br><span style="color:var(--lime-300);">One place.</span>
+      </h1>
+      <p style="font-size:16px;max-width:480px;margin-bottom:32px;color:var(--light-400);">
+        Charts. Gameplays. Projects. Blog. Everything scattered across socials — finally home.
+      </p>
+      <div class="row">
+        <button class="btn btn-primary" style="padding:12px 26px;font-size:13px;">Explore Charts →</button>
+        <button class="btn btn-secondary" style="padding:12px 26px;font-size:13px;">View Archive</button>
+        <button class="btn btn-ghost" style="padding:12px 26px;font-size:13px;">About MZMD</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section" style="padding:32px 0;">
+    <div class="wrap">
+      <div class="grid-4">
+        <div class="stat"><div class="stat-label">Charts</div><div class="stat-value">42</div><div class="stat-sub">+2 this week</div></div>
+        <div class="stat"><div class="stat-label">Gameplays</div><div class="stat-value">18</div><div class="stat-sub">4 games active</div></div>
+        <div class="stat"><div class="stat-label">Projects</div><div class="stat-value">11</div><div class="stat-sub">3 in progress</div></div>
+        <div class="stat"><div class="stat-label">Blog Posts</div><div class="stat-value">27</div><div class="stat-sub">2 drafts</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT CARDS -->
+  <section class="section">
+    <div class="wrap">
+      <p class="sec-label">Latest Content</p>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div><span class="badge badge-chart" style="margin-bottom:6px;display:inline-flex;"><span class="dot dot-live"></span>MZ Charts</span><div class="card-title">Week 17 — The Late Shift</div></div>
+            <div class="card-meta">Apr 14</div>
+          </div>
+          <div class="card-body"><p class="card-text">20 tracks curated for late-night listening. Ambient, liquid D&B, and a few underground surprises from the week.</p></div>
+          <div class="card-footer">
+            <div class="meta-band"><span>20 tracks</span><span class="meta-dot"></span><span>Weekly</span></div>
+            <button class="btn btn-sm btn-secondary">View →</button>
+          </div>
+        </div>
+        <div class="card card-accent">
+          <div class="card-header">
+            <div><span class="badge badge-proj" style="margin-bottom:6px;display:inline-flex;">Project</span><div class="card-title">MZMD — This Very Site</div></div>
+            <span class="badge badge-special">New</span>
+          </div>
+          <div class="card-body"><p class="card-text">Personal brand hub built on Laravel 12, Filament, and Tailwind v4. All content types unified under one model.</p></div>
+          <div class="card-footer">
+            <div class="meta-band"><span>Laravel</span><span class="meta-dot"></span><span>PHP</span><span class="meta-dot"></span><span>Tailwind</span></div>
+            <button class="btn btn-sm btn-primary">Repo →</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div><span class="badge badge-game" style="margin-bottom:6px;display:inline-flex;">Gameplay</span><div class="card-title">Hollow Knight — Steel Soul Run</div></div>
+            <div class="card-meta">Apr 12</div>
+          </div>
+          <div class="card-body"><p class="card-text">Session 04. Made it past the Watcher Knights without dying. First time. Took the Deepnest path instead.</p></div>
+          <div class="card-footer">
+            <div class="meta-band"><span>2h 14m</span><span class="meta-dot"></span><span>PC</span></div>
+            <button class="btn btn-sm btn-ghost">Log →</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div><span class="badge badge-blog" style="margin-bottom:6px;display:inline-flex;">Blog</span><div class="card-title">Why I Stopped Using WordPress</div></div>
+            <div class="card-meta">Apr 10</div>
+          </div>
+          <div class="card-body"><p class="card-text">Breakdown of moving everything to a custom Laravel stack. The decision, the pain, and why it was worth it.</p></div>
+          <div class="card-footer">
+            <div class="meta-band"><span>5 min read</span></div>
+            <button class="btn btn-sm btn-ghost">Read →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BADGES -->
+  <section class="section" style="padding:28px 0;">
+    <div class="wrap">
+      <p class="sec-label">Badge Types</p>
+      <div class="row">
+        <span class="badge badge-chart"><span class="dot dot-live"></span>MZ Charts</span>
+        <span class="badge badge-game">Gameplay</span>
+        <span class="badge badge-proj">Project</span>
+        <span class="badge badge-blog">Blog</span>
+        <span class="badge badge-special">Special</span>
+        <span class="badge badge-info">New</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUTTONS -->
+  <section class="section" style="padding:28px 0;">
+    <div class="wrap">
+      <p class="sec-label">Button States</p>
+      <div class="row" style="margin-bottom:10px;">
+        <button class="btn btn-primary">Primary CTA</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-ghost">Ghost</button>
+        <button class="btn btn-danger">Danger</button>
+        <button class="btn btn-disabled" disabled>Disabled</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-sm btn-primary">Small</button>
+        <button class="btn btn-sm btn-secondary">Small</button>
+        <button class="btn btn-sm btn-ghost">Small</button>
+        <button class="btn btn-lg btn-primary">Large CTA</button>
+        <button class="btn btn-primary" style="opacity:0.75;cursor:wait;">
+          <span class="spinner"></span>Loading
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMS -->
+  <section class="section">
+    <div class="wrap">
+      <p class="sec-label">Form Inputs</p>
+      <div class="grid-2" style="gap:24px;">
+        <div>
+          <div class="field">
+            <label class="field-label">Default</label>
+            <input class="input" type="text" placeholder="Post title…">
+          </div>
+          <div class="field">
+            <label class="field-label">Error state</label>
+            <input class="input input-error" type="text" value="bad-slug!!">
+            <span class="field-error">Slug contains invalid characters.</span>
+          </div>
+          <div class="field">
+            <label class="field-label">Success state</label>
+            <input class="input input-success" type="text" value="week-17-late-shift">
+            <span class="field-ok">Slug is available.</span>
+          </div>
+          <div class="field">
+            <label class="field-label">Disabled</label>
+            <input class="input" type="text" value="Not editable" disabled style="opacity:0.45;cursor:not-allowed;">
+          </div>
+        </div>
+        <div>
+          <div class="field">
+            <label class="field-label">Content type</label>
+            <div class="select-wrap">
+              <select>
+                <option>MZ Charts</option>
+                <option>Gameplay</option>
+                <option>Project</option>
+                <option>Blog</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label">Description</label>
+            <textarea class="input" rows="3" placeholder="Write your post content…"></textarea>
+          </div>
+          <div class="field" style="gap:10px;">
+            <label class="field-label">Toggles</label>
+            <div class="toggle-row">
+              <label class="toggle"><input type="checkbox" checked><div class="t-track"></div><div class="t-thumb"></div></label>
+              <span style="font-size:12px;color:var(--light-400);">Published</span>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle"><input type="checkbox"><div class="t-track"></div><div class="t-thumb"></div></label>
+              <span style="font-size:12px;color:var(--light-400);">Featured</span>
+            </div>
+            <label class="check-row"><input type="checkbox" checked><span>Special edition</span></label>
+            <label class="check-row"><input type="checkbox"><span>Archive only</span></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALERTS -->
+  <section class="section">
+    <div class="wrap">
+      <p class="sec-label">Alerts &amp; Notifications</p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="alert alert-success">
+          <span class="alert-icon">✓</span>
+          <div><div class="alert-title">Published</div>Week 17 chart is now live on MZMD.</div>
+        </div>
+        <div class="alert alert-warning">
+          <span class="alert-icon">!</span>
+          <div><div class="alert-title">Unsaved changes</div>Your draft has not been saved. Click Save to continue.</div>
+        </div>
+        <div class="alert alert-danger">
+          <span class="alert-icon">✕</span>
+          <div><div class="alert-title">Upload failed</div>Cover image exceeds the 2MB limit.</div>
+        </div>
+        <div class="alert alert-info">
+          <span class="alert-icon">i</span>
+          <div><div class="alert-title">Filament ready</div>Manage all content at /admin.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGINATION -->
+  <section class="section" style="padding:28px 0;">
+    <div class="wrap">
+      <p class="sec-label">Pagination</p>
+      <div class="pager">
+        <button class="pager-btn">‹</button>
+        <button class="pager-btn">1</button>
+        <button class="pager-btn active">2</button>
+        <button class="pager-btn">3</button>
+        <button class="pager-btn">4</button>
+        <span style="color:var(--light-700);font-size:12px;padding:0 4px;">…</span>
+        <button class="pager-btn">17</button>
+        <button class="pager-btn">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOR RAMPS -->
+  <section class="section">
+    <div class="wrap">
+      <p class="sec-label">Color Scales Reference</p>
+
+      <p style="font-size:10px;color:var(--light-700);font-family:var(--fm);margin-bottom:6px;">dark — 50–950</p>
+      <div class="ramp-strip" style="margin-bottom:14px;">
+        <div class="ramp-stop" style="background:#f0efee;"><span style="color:#333;">50</span></div>
+        <div class="ramp-stop" style="background:#d4d3d0;"><span style="color:#333;">100</span></div>
+        <div class="ramp-stop" style="background:#a8a7a4;"><span style="color:#111;">200</span></div>
+        <div class="ramp-stop" style="background:#7a7977;"><span style="color:#eee;">300</span></div>
+        <div class="ramp-stop" style="background:#4f4e4c;"><span style="color:#eee;">400</span></div>
+        <div class="ramp-stop" style="background:#363634;"><span style="color:#ccc;">500</span></div>
+        <div class="ramp-stop" style="background:#272727;"><span style="color:#999;">600</span></div>
+        <div class="ramp-stop" style="background:#1f1f1f;"><span style="color:#888;">700</span></div>
+        <div class="ramp-stop" style="background:#181818;"><span style="color:#777;">800</span></div>
+        <div class="ramp-stop" style="background:#111111;"><span style="color:#666;">900</span></div>
+        <div class="ramp-stop" style="background:#0a0a0a;"><span style="color:#555;">950</span></div>
+      </div>
+
+      <p style="font-size:10px;color:var(--light-700);font-family:var(--fm);margin-bottom:6px;">light — 50–950</p>
+      <div class="ramp-strip" style="margin-bottom:14px;">
+        <div class="ramp-stop" style="background:#fdfaf5;"><span style="color:#333;">50</span></div>
+        <div class="ramp-stop" style="background:#f5efe0;"><span style="color:#333;">100</span></div>
+        <div class="ramp-stop" style="background:#e8e0ce;"><span style="color:#333;">200</span></div>
+        <div class="ramp-stop" style="background:#d4cfc4;"><span style="color:#333;">300</span></div>
+        <div class="ramp-stop" style="background:#b8b0a0;"><span style="color:#222;">400</span></div>
+        <div class="ramp-stop" style="background:#9c9488;"><span style="color:#111;">500</span></div>
+        <div class="ramp-stop" style="background:#8c8578;"><span style="color:#eee;">600</span></div>
+        <div class="ramp-stop" style="background:#6e6860;"><span style="color:#eee;">700</span></div>
+        <div class="ramp-stop" style="background:#504b45;"><span style="color:#eee;">800</span></div>
+        <div class="ramp-stop" style="background:#3a3830;"><span style="color:#ccc;">900</span></div>
+        <div class="ramp-stop" style="background:#1e1c1a;"><span style="color:#aaa;">950</span></div>
+      </div>
+
+      <p style="font-size:10px;color:var(--light-700);font-family:var(--fm);margin-bottom:6px;">lime — 50–950</p>
+      <div class="ramp-strip" style="margin-bottom:14px;">
+        <div class="ramp-stop" style="background:#f2fcd8;"><span style="color:#1a3a00;">50</span></div>
+        <div class="ramp-stop" style="background:#e3f8b0;"><span style="color:#1a3a00;">100</span></div>
+        <div class="ramp-stop" style="background:#c5f267;"><span style="color:#1a3a00;">200</span></div>
+        <div class="ramp-stop" style="background:#a3e635;border-top:2px solid rgba(0,0,0,0.2);"><span style="color:#0a0a0a;">300</span></div>
+        <div class="ramp-stop" style="background:#7ab82a;"><span style="color:#0a0a0a;">400</span></div>
+        <div class="ramp-stop" style="background:#4a6e1a;"><span style="color:#c5f267;">500</span></div>
+        <div class="ramp-stop" style="background:#2d4510;"><span style="color:#a3e635;">600</span></div>
+        <div class="ramp-stop" style="background:#1e2e0a;"><span style="color:#7ab82a;">700</span></div>
+        <div class="ramp-stop" style="background:#111a05;"><span style="color:#4a6e1a;">800</span></div>
+        <div class="ramp-stop" style="background:#080e02;"><span style="color:#2d4510;">900</span></div>
+        <div class="ramp-stop" style="background:#040802;"><span style="color:#1e2e0a;">950</span></div>
+      </div>
+
+      <div class="grid-3" style="gap:12px;">
+        <div>
+          <p style="font-size:10px;color:var(--light-700);font-family:var(--fm);margin-bottom:6px;">danger — 100–400</p>
+          <div style="border-radius:8px;overflow:hidden;">
+            <div style="background:#2d0f0f;padding:10px 12px;display:flex;justify-content:space-between;"><span style="font-family:var(--fm);font-size:10px;color:var(--danger-400);">100</span><span style="font-family:var(--fm);font-size:10px;color:var(--danger-400);">#2d0f0f</span></div>
+            <div style="background:#7a2323;padding:10px 12px;display:flex;justify-content:space-between;"><span style="font-family:var(--fm);font-size:10px;color:#f8a0a0;">200</span><span style="font-family:var(--fm);font-size:10px;color:#f8a0a0;">#7a2323</span></div>
+            <div style="background:#c45252;padding:10px 12px;display:flex;justify-content:space-between;"><span style="font-family:var(--fm);font-size:10px;color:#111;">300</span><span style="font-family:var(--fm);font-size:10px;color:#111;">#c45252</span></div>
+            <div style="background:#f87171;border-top:2px solid rgba(0,0,0,0.15);padding:10px 12px;display:flex;justify-content:space-between;"><span style="font-family:var(--fm);font-size:10px;color:#111;">400</span><span style="font-family:var(--fm);font-size:10px;color:#111;">#f87171</span></div>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:10px;color:var(--light-700);font-family:var(--fm);margin-bottom:6px;">warning — 100–400</p>
+          <div style="border-radius:8px;overflow:hidden;">
+            <div style="background:#2d1f05;padding:10px 12px;display:flex;justify-content:space-between;"><span style="font-family:var(--fm);font-size:10px;color:var(--warning-400);">100</span><span style="font-family:var(--fm);font-size:10px;color:var(--warning-400);">#2d1f05</span></div>
+            <div style="background:#7a5010;padding:10px 12px;display:flex;justify-content:space-between;"><span style="font-family:var(--fm);font-size:10px;color:#fde68a;">200</span><span style="font-family:var(--fm);font-size:10px;color:#fde68a;">#7a5010</span></div>
+            <div style="background:#c4911a;padding:10px 12px;display:flex;justify-content:space-between;"><span style="font-family:var(--fm);font-size:10px;color:#111;">300</span><span style="font-family:var(--fm);font-size:10px;color:#111;">#c4911a</span></div>
+            <div style="background:#fbbf24;border-top:2px solid rgba(0,0,0,0.15);padding:10px 12px;display:flex;justify-content:space-between;"><span style="font-family:var(--fm);font-size:10px;color:#111;">400</span><span style="font-family:var(--fm);font-size:10px;color:#111;">#fbbf24</span></div>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:10px;color:var(--light-700);font-family:var(--fm);margin-bottom:6px;">info — 100–400</p>
+          <div style="border-radius:8px;overflow:hidden;">
+            <div style="background:#0d1f35;padding:10px 12px;display:flex;justify-content:space-between;"><span style="font-family:var(--fm);font-size:10px;color:var(--info-400);">100</span><span style="font-family:var(--fm);font-size:10px;color:var(--info-400);">#0d1f35</span></div>
+            <div style="background:#1e4a7a;padding:10px 12px;display:flex;justify-content:space-between;"><span style="font-family:var(--fm);font-size:10px;color:#bfdbfe;">200</span><span style="font-family:var(--fm);font-size:10px;color:#bfdbfe;">#1e4a7a</span></div>
+            <div style="background:#4d8fc4;padding:10px 12px;display:flex;justify-content:space-between;"><span style="font-family:var(--fm);font-size:10px;color:#111;">300</span><span style="font-family:var(--fm);font-size:10px;color:#111;">#4d8fc4</span></div>
+            <div style="background:#93c5fd;border-top:2px solid rgba(0,0,0,0.15);padding:10px 12px;display:flex;justify-content:space-between;"><span style="font-family:var(--fm);font-size:10px;color:#111;">400</span><span style="font-family:var(--fm);font-size:10px;color:#111;">#93c5fd</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--dark-950);border-top:0.5px solid rgba(255,255,255,0.06);padding:32px 24px;">
+    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <div class="nav-logo" style="font-size:16px;">MZ<span>·</span>MD</div>
+      <div class="meta-band">
+        <span>Charts</span><span class="meta-dot"></span>
+        <span>Gameplays</span><span class="meta-dot"></span>
+        <span>Projects</span><span class="meta-dot"></span>
+        <span>Blog</span>
+      </div>
+      <div style="font-size:11px;color:var(--light-700);">© 2026 MZMD. All rights reserved.</div>
+    </div>
+  </footer>
+
+</body>
+</html>
