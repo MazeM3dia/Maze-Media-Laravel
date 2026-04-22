@@ -1,4 +1,4 @@
-<x-layouts.templates.default title="Homepage">
+<x-layouts.templates.homepage title="Homepage">
 
     <x-slot:styles>
     </x-slot:styles>
@@ -8,4 +8,4 @@
     <x-slot:scripts>
     </x-slot:scripts>
 
-</x-layouts.templates.default>
+</x-layouts.templates.homepage>

@@ -1,4 +1,4 @@
-<x-layouts.templates.default title="Privacy Policy">
+<x-layouts.templates.page title="Privacy Policy">
 
     <x-slot:styles>
     </x-slot:styles>
@@ -8,4 +8,4 @@
     <x-slot:scripts>
     </x-slot:scripts>
 
-</x-layouts.templates.default>
+</x-layouts.templates.page>

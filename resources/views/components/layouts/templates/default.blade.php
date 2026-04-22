@@ -5,7 +5,7 @@
 
     {{ $styles ?? '' }}
 </head>
-<body>
+<body class="antialiased bg-dark-900 font-body text-base lg:text-lg text-light-400 leading-normal">
 
     @include('partials.header')
 
