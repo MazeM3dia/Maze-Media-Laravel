@@ -91,5 +91,5 @@
 input:focus[data-flux-control],
 textarea:focus[data-flux-control],
 select:focus[data-flux-control] {
-    @apply outline-hidden ring-2  ring-offset-2;
+    @apply outline-hidden ring-2 ring-offset-2;
 }
