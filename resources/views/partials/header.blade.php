@@ -1,5 +1,5 @@
 <nav x-data="{ mobileOpen: false, active: null, mobileActive: null }"
-    :class="mobileOpen ? 'fixed inset-0 z-30 bg-dark-950 flex flex-col' : 'fixed top-0 inset-x-0 z-30 bg-dark-950'"
+    :class="mobileOpen ? 'fixed inset-0 z-30 bg-dark-950 flex flex-col' : 'fixed top-0 inset-x-0 z-30 bg-dark-950/90'"
     class="border-b border-light-50/10 text-base"
     aria-label="Main navigation"
     @keydown.escape="active = null; mobileOpen = false"
@@ -8,10 +8,7 @@
 
     {{-- Top bar --}}
     <div class="container mx-auto p-4 lg:py-5.5 lg:px-6 xl:px-8 flex items-center justify-between shrink-0">
-        <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="/assets/logos/mazem3dia-white-logo.png" class="h-5 lg:h-6 w-auto" alt="{{ config('app.name') }}" />
-            <span class="sr-only self-center text-xl font-semibold whitespace-nowrap">{{ config('app.name') }}</span>
-        </a>
+        <x-reusables.logo height="h-5 lg:h-6" />
 
         {{-- Desktop nav --}}
         <ul class="hidden md:flex items-center font-medium gap-x-1">

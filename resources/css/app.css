@@ -78,6 +78,14 @@
     h1, h2, h3, h4, h5, h6 {
         @apply font-heading font-semibold leading-relaxed tracking-tight mb-4;
     }
+
+    ::selection {
+        @apply bg-lime-300 text-dark-950;
+    }
+
+    :focus-visible {
+        @apply outline-2 outline-lime-300 outline-offset-3 rounded;
+    }
 }
 
 [data-flux-field]:not(ui-radio, ui-checkbox) {
