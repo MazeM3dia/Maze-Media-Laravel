@@ -7,7 +7,7 @@
     <x-reusables.page-header :heading="$heading" :bg="$bg" />
     @endif
 
-    <div class="container mx-auto px-4 lg:px-6 xl:px-8 py-6">
+    <div class="container mx-auto px-4 lg:px-6 xl:px-8 py-8 lg:py-12">
         {{ $slot }}
     </div>
 
