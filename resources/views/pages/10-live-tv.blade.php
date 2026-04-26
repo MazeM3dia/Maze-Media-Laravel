@@ -1,4 +1,4 @@
-<x-layouts.templates.page title="Live TV" heading="Live TV">
+<x-layouts.templates.page title="Live TV" heading="Live TV" bg="/assets/headers/header-live-tv.jpg">
 
     <x-slot:styles>
     </x-slot:styles>

@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Maze Media'),
+
+    'tagline' => env('APP_TAGLINE', "It's Surely Amazing!"),
 
     /*
     |--------------------------------------------------------------------------

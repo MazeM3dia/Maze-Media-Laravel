@@ -1,4 +1,4 @@
-<x-layouts.templates.page title="Sitemap" heading="Sitemap">
+<x-layouts.templates.page title="Sitemap" heading="Sitemap" bg="/assets/headers/header-sitemap.jpg">
 
     <x-slot:styles>
     </x-slot:styles>

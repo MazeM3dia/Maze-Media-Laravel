@@ -1,4 +1,4 @@
-<x-layouts.templates.page title="Contact" heading="Contact">
+<x-layouts.templates.page title="Contact" heading="Contact" bg="/assets/headers/header-contact.jpg">
 
     <x-slot:styles>
     </x-slot:styles>

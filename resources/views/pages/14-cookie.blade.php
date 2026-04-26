@@ -1,4 +1,4 @@
-<x-layouts.templates.page title="Cookie Policy" heading="Cookie Policy">
+<x-layouts.templates.page title="Cookie Policy" heading="Cookie Policy" bg="/assets/headers/header-legal.jpg">
 
     <x-slot:styles>
     </x-slot:styles>

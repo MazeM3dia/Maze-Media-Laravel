@@ -1,4 +1,4 @@
-<x-layouts.templates.page title="Blog" heading="Blog">
+<x-layouts.templates.page title="Blog" heading="Blog" bg="/assets/headers/header-blog.jpg">
 
     <x-slot:styles>
     </x-slot:styles>

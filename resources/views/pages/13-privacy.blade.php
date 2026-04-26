@@ -1,4 +1,4 @@
-<x-layouts.templates.page title="Privacy Policy" heading="Privacy Policy">
+<x-layouts.templates.page title="Privacy Policy" heading="Privacy Policy" bg="/assets/headers/header-legal.jpg">
 
     <x-slot:styles>
     </x-slot:styles>

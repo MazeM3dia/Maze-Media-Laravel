@@ -1,4 +1,4 @@
-<x-layouts.templates.page title="MZ Gameplays" heading="MZ Gameplays">
+<x-layouts.templates.page title="MZ Gameplays" heading="MZ Gameplays" bg="/assets/headers/header-mz-gameplays.jpg">
 
     <x-slot:styles>
     </x-slot:styles>

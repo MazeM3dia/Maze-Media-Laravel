@@ -1,4 +1,4 @@
-<x-layouts.templates.page title="Terms" heading="Terms">
+<x-layouts.templates.page title="Terms of Use" heading="Terms of Use" bg="/assets/headers/header-legal.jpg">
 
     <x-slot:styles>
     </x-slot:styles>

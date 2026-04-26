@@ -1,4 +1,4 @@
-<x-layouts.templates.page title="MZ Charts Post" heading="MZ Charts Post">
+<x-layouts.templates.page title="MZ Charts Post" heading="MZ Charts Post" bg="/assets/headers/header-mz-charts.jpg">
 
     <x-slot:styles>
     </x-slot:styles>

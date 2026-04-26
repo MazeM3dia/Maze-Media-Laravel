@@ -8,7 +8,7 @@
 
     {{-- Top bar --}}
     <div class="container mx-auto p-4 lg:py-5.5 lg:px-6 xl:px-8 flex items-center justify-between shrink-0">
-        <x-reusables.logo height="h-5 lg:h-6" />
+        <x-reusables.logo height="h-5 lg:h-6" :hoverShift="true" />
 
         {{-- Desktop nav --}}
         <ul class="hidden md:flex items-center font-medium gap-x-1">
