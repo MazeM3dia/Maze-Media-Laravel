@@ -1,6 +1,6 @@
 <nav x-data="{ mobileOpen: false, active: null, mobileActive: null }"
     :class="mobileOpen ? 'fixed inset-0 z-30 bg-dark-950 flex flex-col' : 'fixed top-0 inset-x-0 z-30 bg-dark-950/90'"
-    class="border-b border-light-50/10 text-base"
+    class="border-b border-light-50/10 text-base backdrop-blur-md"
     aria-label="Main navigation"
     @keydown.escape="active = null; mobileOpen = false"
     @resize.window="if (window.innerWidth >= 768) mobileOpen = false"
